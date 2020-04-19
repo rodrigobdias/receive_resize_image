@@ -1,0 +1,7 @@
+Flask
+opencv-python
+Flask-RESTful
+Jinja2
+numpy
+requests
+pika

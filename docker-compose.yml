@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: rabbitmq_images
+    restart: always
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - "./data:/var/lib/rabbitmq/mnesia/"
+#    networks:
+#      - rabbitmq
+
+  receive_image:
+    build: ./receive_image/
+    image: receive_image
+    container_name: receive_image
+    restart: always
+    ports:
+      - '5000:5000'
+#    depends_on:
+#      - rabbitmq
+    links:
+      - rabbitmq
+#    networks:
+#      - receive_image
+
+#networks:
+#  rabbitmq:
+#    driver: bridge
+#  receive_image:
+#    driver: bridge
+
