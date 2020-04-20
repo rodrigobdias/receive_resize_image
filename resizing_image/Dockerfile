@@ -17,4 +17,4 @@ COPY conf_resizing_rabbitmq.py conf_resizing_rabbitmq.py
 COPY __init__.py __init__.py
 COPY resizing_image.py resizing_image.py
 
-CMD [ "python3", "./resizing_image.py" ]
+CMD [ "python3", "/home/resizing_image/resizing_image.py" ]

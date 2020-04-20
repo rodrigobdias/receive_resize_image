@@ -12,17 +12,17 @@ services:
     volumes:
       - "./data:/var/lib/rabbitmq/mnesia/"
 
-#  receive_image:
-#    build: ./receive_image/
-#    image: receive_image
-#    container_name: receive_image
-#    restart: always
-#    ports:
-#      - '5000:5000'
-#    depends_on:
-#      - rabbitmq
-#    links:
-#      - rabbitmq
+  receive_image:
+    build: ./receive_image/
+    image: receive_image
+    container_name: receive_image
+    restart: always
+    ports:
+      - '5000:5000'
+    depends_on:
+      - rabbitmq
+    links:
+      - rabbitmq
 
   resizing_image:
     build: ./resizing_image/
