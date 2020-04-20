@@ -11,26 +11,27 @@ services:
       - "5672:5672"
     volumes:
       - "./data:/var/lib/rabbitmq/mnesia/"
-#    networks:
-#      - rabbitmq
 
-  receive_image:
-    build: ./receive_image/
-    image: receive_image
-    container_name: receive_image
-    restart: always
-    ports:
-      - '5000:5000'
+#  receive_image:
+#    build: ./receive_image/
+#    image: receive_image
+#    container_name: receive_image
+#    restart: always
+#    ports:
+#      - '5000:5000'
 #    depends_on:
 #      - rabbitmq
+#    links:
+#      - rabbitmq
+
+  resizing_image:
+    build: ./resizing_image/
+    image: resizing_image
+    container_name: resizing_image
+    restart: always
+    volumes:
+      - "./resizing:/home/resizing_image/"
     links:
       - rabbitmq
-#    networks:
-#      - receive_image
-
-#networks:
-#  rabbitmq:
-#    driver: bridge
-#  receive_image:
-#    driver: bridge
-
+    depends_on:
+      - rabbitmq

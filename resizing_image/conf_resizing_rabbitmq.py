@@ -8,10 +8,14 @@ class Config():
     def __init__(self):
         self.queue = 'json_data'
         self.guest = 'guest'
+        self.host = 'rabbitmq'
+        self.port = 5672
+        self.virtual_host = '/'
+
         self.cred = pika.PlainCredentials(self.guest, self.guest)
-        self.params = pika.ConnectionParameters(host='127.0.0.1',
-                                                port=5672,
-                                                virtual_host='/',
+        self.params = pika.ConnectionParameters(host=self.host,
+                                                port=self.port,
+                                                virtual_host=self.virtual_host,
                                                 credentials=self.cred
                                                )
         self.connection = pika.BlockingConnection(self.params)
@@ -48,7 +52,4 @@ class RabbitmqConsume(Config):
     def start_consuming(self):
         """Waiting for messages."""
         self.channel.start_consuming()
-
-
-
 
