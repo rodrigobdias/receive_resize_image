@@ -57,7 +57,6 @@ def receive_file():
             conf_rabbitmq.basic_publish(data_serialized)
 
             return redirect('/')
-    #return render_template('auth/login.html', form=form)
     return '''
     <!doctype html>
     <title>Upload new File</title>

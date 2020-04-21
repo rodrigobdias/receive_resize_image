@@ -2,16 +2,6 @@ version: '2'
 
 services:
 
-  rabbitmq:
-    image: rabbitmq:latest
-    container_name: rabbitmq_images
-    restart: always
-    ports:
-      - "15672:15672"
-      - "5672:5672"
-    volumes:
-      - "./data:/var/lib/rabbitmq/mnesia/"
-
   receive_image:
     build: ./receive_image/
     image: receive_image
@@ -29,9 +19,23 @@ services:
     image: resizing_image
     container_name: resizing_image
     restart: always
-    volumes:
-      - "./resizing:/home/resizing_image/"
+#    volumes:
+#      - resizing_image:/home/resizing_image
     links:
       - rabbitmq
     depends_on:
       - rabbitmq
+
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: rabbitmq_images
+    restart: always
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - "./data:/var/lib/rabbitmq/mnesia/"
+
+#volumes:
+#  resizing_image:
+#    external: true

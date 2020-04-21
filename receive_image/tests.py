@@ -1,12 +1,12 @@
 import unittest
-from upload_image import app
+from receive_image import app
 
 
 class TestApi(unittest.TestCase):
 
     def test_get(self):
         self.app = app.test_client()
-        response = self.app.get('/input')
+        response = self.app.get('/')
         self.assertEqual(200, response.status_code)
 
 if __name__ == '__main__':
