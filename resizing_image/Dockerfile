@@ -1,11 +1,13 @@
 FROM ubuntu
 
-RUN apt-get update
-RUN apt-get install -y python3 python3-pip
-RUN apt-get install -y libsm6 libxext6 libxrender-dev
-
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
+
+RUN apt-get update
+
+RUN apt-get install -y python3 python3-pip
+RUN apt-get install -y libsm6 libxext6 libxrender-dev
+RUN apt-get install -y libgtk2.0-dev
 
 RUN mkdir -p /home/resizing_image
 WORKDIR /home/resizing_image
