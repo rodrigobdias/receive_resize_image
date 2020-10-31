@@ -1,7 +1,7 @@
 # receive_resize_image
 
 
-É um aplicativo cuja função é receber um arquivo de imagem como parâmetro de entrada, essa imagem será processada e enviada para uma fila rabbitmq. Posteriormente, esses dados armazenados, serão consumidos e uma nova imagem será gerada com um novo redimensionamento.
+A função desse projeto é receber um arquivo de imagem como parâmetro de entrada, essa imagem será processada e enviada para uma fila rabbitmq. Posteriormente, esses dados armazenados, serão consumidos e uma nova imagem será gerada com um novo redimensionamento.
 
 Para utilizar o aplicativo, basta executar o comando:
 
